@@ -63,6 +63,15 @@
       It can take a while to start if you install the dependencies for
       the first time or if you've just updated your quicklisp dists.
 
+      *Note:* Just in case you don't already have that, be sure to
+      enable user lingering for whichever user you use to run this
+      service:
+
+      : sudo loginctl enable-linger username
+
+      Where =username= should be replaced with whichever username you
+      use to run pacman-db-viewer.
+
    5. Setup a reverse proxy in =lighttpd.conf=:
 
       #+BEGIN_SRC fundamental
