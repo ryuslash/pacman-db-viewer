@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title></title>
+<!-- 2015-02-08 Sun 16:26 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Tom Willemse" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link href="/org.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title"></h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Pacman DB Viewer</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A web view for Pacman package databases.
+</p>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Setup</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+This setup uses Quicklisp, bower, systemd, GNU Screen, SBCL and
+Lighttpd to get things running. This is not the only way to do it,
+but it is the way I've set it up.
+</p>
+
+<ol class="org-ol">
+<li>Clone pacman-db-viewer into your quicklisp local-projects
+directory and install the bower dependencies.
+
+<pre class="example">
+cd ~/quicklisp/local-projects
+git clone git://github.com/ryuslash/pacman-db-viewer.git
+cd pacman-db-viewer
+bower install
+</pre>
+</li>
+
+<li>Create a file <code>~/start-pacman-db-viewer.lisp</code> and put the
+following contents in it:
+
+<div class="org-src-container">
+
+<pre class="src src-lisp"><span style="color: #a85454;">(</span>ql:quickload <span style="color: #54a875;">"pacman-db-viewer"</span><span style="color: #a85454;">)</span>
+<span style="color: #a85454;">(</span>use-package <span style="color: #54a8a8;">:clack.app.urlmap</span><span style="color: #a85454;">)</span>
+
+<span style="color: #a85454;">(</span>setf pacman-db-viewer-config:*database-file* #P<span style="color: #54a875;">"/path/to/pacman.db.tar.gz"</span><span style="color: #a85454;">)</span>
+
+<span style="color: #a85454;">(</span><span style="color: #a88654;">defparameter</span> <span style="color: #8d995c;">*urlmap*</span> <span style="color: #a88654;">(</span>make-instance '&lt;clack-app-urlmap&gt;<span style="color: #a88654;">)</span><span style="color: #a85454;">)</span>
+<span style="color: #a85454;">(</span>mount *urlmap*  <span style="color: #54a875;">"/packages/"</span> <span style="color: #a88654;">(</span>pacman-db-viewer:get-app<span style="color: #a88654;">)</span><span style="color: #a85454;">)</span>
+<span style="color: #a85454;">(</span><span style="color: #a88654;">defvar</span> <span style="color: #8d995c;">*handler*</span> <span style="color: #a88654;">(</span>clack:clackup *urlmap* <span style="color: #54a8a8;">:port</span> 8028<span style="color: #a88654;">)</span><span style="color: #a85454;">)</span>
+</pre>
+</div>
+
+<p>
+The <code>/packages/</code> path and <code>8028</code> port are both just suggestions. You
+can use whichever values you like.
+</p>
+
+<p>
+If you have any other clack-based applications you can easily
+add them by adding more <code>mount</code> calls.
+</p>
+</li>
+
+<li>Create a service file in <code>~/.config/systemd/user/</code> named
+<code>pacman-db-viewer.service</code>. Put the following contents in it:
+
+<div class="org-src-container">
+
+<pre class="src src-conf-unix">[<span style="color: #7d71a8;">Unit</span>]
+<span style="color: #8d995c;">Description</span>=Pacman DB Viewer
+
+[<span style="color: #7d71a8;">Service</span>]
+<span style="color: #8d995c;">Type</span>=simple
+<span style="color: #8d995c;">ExecStart</span>=/usr/bin/screen -D -m /usr/bin/sbcl --load /path/to/start-pacman-db-viewer.lisp
+
+[<span style="color: #7d71a8;">Install</span>]
+<span style="color: #8d995c;">WantedBy</span>=default.target
+</pre>
+</div>
+</li>
+
+<li>Start and enable the service:
+
+<pre class="example">
+systemctl --user start pacman-db-viewer
+systemctl --user enable pacman-db-viewer
+</pre>
+
+<p>
+It can take a while to start if you install the dependencies for
+the first time or if you've just updated your quicklisp dists.
+</p>
+</li>
+
+<li>Setup a reverse proxy in <code>lighttpd.conf</code>:
+
+<div class="org-src-container">
+
+<pre class="src src-fundamental">server.modules += ( <span style="color: #54a875;">"mod_proxy"</span> )
+
+$HTTP[<span style="color: #54a875;">"host"</span>] =~ <span style="color: #54a875;">"^(www\.)?example\.com"</span> {
+    $HTTP[<span style="color: #54a875;">"url"</span>] =~ <span style="color: #54a875;">"^/packages/?"</span> {
+        proxy.server = ( <span style="color: #54a875;">""</span> =&gt; (( <span style="color: #54a875;">"host"</span> =&gt; <span style="color: #54a875;">"127.0.0.1"</span>,
+                                  <span style="color: #54a875;">"port"</span> =&gt; 2028 )) )
+    }
+}
+</pre>
+</div>
+
+<p>
+Where you'd replace <code>example.com</code> with your own domain (which you
+probably already have setup), <code>packages</code> with whichever path you
+specified in <code>start-pacman-db-viewer.lisp</code>, and the port you
+specified there as well.
+</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Tom Willemse</p>
+<p class="date">Created: 2015-02-08 Sun 16:26</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.0.50.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
