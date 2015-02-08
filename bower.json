@@ -1,0 +1,21 @@
+{
+  "name": "pacman-db-viewer",
+  "version": "0.1.0",
+  "authors": [
+    "Tom Willemse <tom@ryuslash.org>"
+  ],
+  "description": "View Pacman package databases",
+  "license": "AGPLv3",
+  "homepage": "https://ryuslash.org",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}

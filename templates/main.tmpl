@@ -1,0 +1,85 @@
+/* -*- mode: closure-template-html; -*- */
+/* pacman-db-viewer --- View Pacman package databases.
+   Copyright (C) 2015  Tom Willemse
+
+   pacman-db-viewer is free software: you can redistribute it and/or
+   modify it under the terms of the GNU Affero General Public License
+   as published by the Free Software Foundation, either version 3 of
+   the License, or (at your option) any later version.
+
+   pacman-db-viewer is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+   Affero General Public License for more details.
+
+   You should have received a copy of the GNU Affero General Public
+   License along with pacman-db-viewer. If not, see
+   <http://www.gnu.org/licenses/>.
+ */
+
+{namespace pacman-db-templates}
+
+{template main}
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>{$title}</title>
+      <script src="assets/jquery/dist/jquery.min.js"
+              type="text/javascript" language="javascript"></script>
+      <script src="assets/bootstrap/dist/js/bootstrap.min.js"
+              type="text/javascript" language="javascript"></script>
+      <link href="assets/bootstrap/dist/css/bootstrap.min.css"
+            type="text/css" rel="stylesheet" />
+      <link href="assets/bootstrap/dist/css/bootstrap-theme.min.css"
+            type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+      <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand">{$title}</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <p>
+          The following packages are contained in the repository at:
+          <a href="https://ryuslash.org/repo/x86_64">
+            https://ryuslash.org/repo/x86_64</a>.
+        </p>
+
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Version</th>
+            </tr>
+          </thead>
+          <tbody>
+            {foreach $pkg in $pkgs}
+              <tr>
+                <td>{$pkg.name}</td>
+                <td>{$pkg.version}</td>
+              </tr>
+            {/foreach}
+          </tbody>
+        </table>
+      </div>
+
+      <footer class="footer">
+        <div class="container">
+          <small>
+            pacman-db-viewer is Free Software available under
+            the <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU
+            Affero General Public License</a>. You can download its
+            source
+            code <a href="https://github.com/ryuslash/pacman-db-viewer/">here</a>.
+          </small>
+        </div>
+      </footer>
+    </body>
+  </html>
+{/template}
