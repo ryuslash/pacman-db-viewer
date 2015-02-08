@@ -19,4 +19,4 @@
   (:use :cl :ningle :chipz :archive :flexi-streams :cl-utilities
         :clack.builder :clack.middleware.static :pacman-db-viewer-config)
   (:import-from :clack :clackup)
-  (:export :start))
+  (:export :get-app))
