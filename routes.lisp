@@ -24,7 +24,7 @@
 (defun get-app ()
   (builder
    (<clack-middleware-static>
-    :path (format nil "/~aassets/" *url-prefix*)
+    :path "/assets/"
     :root (merge-pathnames #P"assets/" *base-directory*))
    *app*))
 
