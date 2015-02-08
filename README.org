@@ -1,3 +1,7 @@
+#+TITLE:
+#+HTML_HEAD: <link href="/org.css" type="text/css" rel="stylesheet" />
+#+OPTIONS: toc:nil num:nil
+
 * Pacman DB Viewer
 
   A web view for Pacman package databases.
