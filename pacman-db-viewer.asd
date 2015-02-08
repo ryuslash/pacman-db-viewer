@@ -16,7 +16,7 @@
 ;; <http://www.gnu.org/licenses/>.
 
 (defpackage :pacman-db-viewer-config
-  (:export :*base-directory* :*database-file*))
+  (:export :*base-directory* :*database-file* :*url-prefix*))
 
 (defparameter pacman-db-viewer-config:*base-directory*
   (make-pathname :name nil :type nil :defaults *load-truename*)
@@ -24,6 +24,11 @@
 
 (defvar pacman-db-viewer-config:*database-file* nil
   "The location of the package database to read from.")
+
+(defvar pacman-db-viewer-config:*url-prefix* ""
+  "Prefix added to URLs.
+
+This option is required for the proper serving of static assets.")
 
 (asdf:defsystem :pacman-db-viewer
   :serial t
