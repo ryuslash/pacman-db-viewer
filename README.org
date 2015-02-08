@@ -1,3 +1,78 @@
 * Pacman DB Viewer
 
   A web view for Pacman package databases.
+
+** Setup
+
+   This setup uses Quicklisp, bower, systemd, GNU Screen, SBCL and
+   Lighttpd to get things running. This is not the only way to do it,
+   but it is the way I've set it up.
+
+   1. Clone pacman-db-viewer into your quicklisp local-projects
+      directory and install the bower dependencies.
+
+      : cd ~/quicklisp/local-projects
+      : git clone git://github.com/ryuslash/pacman-db-viewer.git
+      : cd pacman-db-viewer
+      : bower install
+
+   2. Create a file =~/start-pacman-db-viewer.lisp= and put the
+      following contents in it:
+
+      #+BEGIN_SRC lisp
+        (ql:quickload "pacman-db-viewer")
+        (use-package :clack.app.urlmap)
+
+        (setf pacman-db-viewer-config:*database-file* #P"/path/to/pacman.db.tar.gz")
+
+        (defparameter *urlmap* (make-instance '<clack-app-urlmap>))
+        (mount *urlmap*  "/packages/" (pacman-db-viewer:get-app))
+        (defvar *handler* (clack:clackup *urlmap* :port 8028))
+      #+END_SRC
+
+      The =/packages/= path and =8028= port are both just suggestions. You
+      can use whichever values you like.
+
+      If you have any other clack-based applications you can easily
+      add them by adding more =mount= calls.
+
+   3. Create a service file in =~/.config/systemd/user/= named
+      =pacman-db-viewer.service=. Put the following contents in it:
+
+      #+BEGIN_SRC conf-unix
+        [Unit]
+        Description=Pacman DB Viewer
+
+        [Service]
+        Type=simple
+        ExecStart=/usr/bin/screen -D -m /usr/bin/sbcl --load /path/to/start-pacman-db-viewer.lisp
+
+        [Install]
+        WantedBy=default.target
+      #+END_SRC
+
+   4. Start and enable the service:
+
+      : systemctl --user start pacman-db-viewer
+      : systemctl --user enable pacman-db-viewer
+
+      It can take a while to start if you install the dependencies for
+      the first time or if you've just updated your quicklisp dists.
+
+   5. Setup a reverse proxy in =lighttpd.conf=:
+
+      #+BEGIN_SRC fundamental
+        server.modules += ( "mod_proxy" )
+
+        $HTTP["host"] =~ "^(www\.)?example\.com" {
+            $HTTP["url"] =~ "^/packages/?" {
+                proxy.server = ( "" => (( "host" => "127.0.0.1",
+                                          "port" => 2028 )) )
+            }
+        }
+      #+END_SRC
+
+      Where you'd replace =example.com= with your own domain (which you
+      probably already have setup), =packages= with whichever path you
+      specified in =start-pacman-db-viewer.lisp=, and the port you
+      specified there as well.
